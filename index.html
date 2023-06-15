@@ -187,7 +187,7 @@
                 <h2>
                     Methods
                 </h2>
-                <!-- 
+
                 <p>
                     DARTS (Differentiable Architecture Search) is a method for automating the search for neural
                     network architectures. The goal is to find the best architecture for a given task without
@@ -225,11 +225,11 @@
                 <ul class="actions special">
                     <li><a href="DARTS.pdf" class="button large">Download PDF</a></li>
                 </ul>
-                -->
+
                 <h2>
                     Results
                 </h2>
-                <!-- 
+
                 <p>
                     The experiments conducted involved training DARTS on the FashionMNIST dataset for 50 epochs,
                     utilizing the only available operations DSConv, MBConv, and Fused-mbconv. Two visualizations of
@@ -257,51 +257,38 @@
 
 
                 </p>
-                -->
+
                 <h2>
                     Conclusion
                 </h2>
 
 
                 <p>
-                    The high accuracy rates and low loss observed in both the training and validation indicate that
-                    the training process was successful. The model has effectively learned the underlying patterns
-                    in the data, as evidenced by the consistently low training loss. Furthermore, analysis of the
-                    log of the last epoch suggests that the reduce operations generally outperform the normal
-                    operations in terms of the softmax values for Alpha - normal and Alpha - reduce. This finding
-                    suggests that the reduce operations are more important for achieving good performance on
-                    FashionMNIST. Of note, the fusedmbconv operation has the highest alpha values among all
-                    operations, underscoring its critical role in achieving strong results on the FashionMNIST
-                    dataset. Taken together, these results demonstrate that the model has been trained effectively
-                    and performs well on the given data.
-
-
-
                 </p>
 
                 <h2>
                     Code implementation
                 </h2>
-                <!-- 
+
                 <p>
                     Code for this blog:
                 <ul class="actions special">
-                    <li><a href="https://github.com/HAJEKEL/EfficientNetV2_paper_reproduction/tree/website"
+                    <li><a href="https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation/tree/website"
                             class="button large">WEBSITE</a></li>
                 </ul>
-                <p> Code to reproduce the training using google colab and google compute engine:
+                <p> Code to reproduce the fine tuning using google colab and google compute engine:
                 </p>
                 <ul class="actions special">
-                    <li><a href="https://github.com/HAJEKEL/EfficientNetV2_paper_reproduction"
+                    <li><a href="https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation/tree/main"
                             class="button large">TRAINING</a></li>
                 </ul>
-                <p> Code for the DARTS implementation with operations DSConv MBConv and Fused-MBConv:
+                <p> Code for the pre-training of Resnet-50 on imagenet:
                 </p>
                 <ul class="actions special">
-                    <li><a href="https://github.com/HAJEKEL/pt.darts class="button large">DARTS</a></li>
+                    <li><a href="https://github.com/HAJEKEL/CV_LTH_Pre-training" class="button large">DARTS</a></li>
                 </ul>
                 </p>
-                -->
+
             </article>
 
 
