@@ -193,6 +193,58 @@
                 <h2>
                     Methods
                 </h2>
+                <p>
+                    This section descripes the experiments done. First the models used are described after which the exact 
+                    mask used will be described. The final part of this section describes all specifics about the 
+                    training procedure.
+                </p>
+                <h3>
+                    Model
+                </h3>
+                <p>
+                    For the experiments the FCRN model architecture will be used, this model architecture was proposed by Laina et al. (2016), 
+                    the model uses ResNet-50 as a base and a self-designed upsampling end. Instead of the fully connected end layer, 
+                    which is used for pre-training, the model has upsampling blocks to generate the 2D depth estimation output.
+                </p>
+                <figure>
+                    <img src="images/model_architecture.png" alt="Model" style="width:100%">
+                    <figcaption>Fig.1 - Complete model architecture including the base ResNet-50 model (first two lines) and the new upsampling blocks (Laina et al.,2016).</figcaption>
+                  </figure>
+                <h4>
+                    Masking
+                </h4>
+                    As described above, we want to combine the proposed model, with the masking of the lottery hypothesis paper. These models were aquired by 
+                <h3>
+                    Dataset
+                </h3>
+                <p>
+                    The dataset used
+                </p>
+                <h3>
+                    Training procedure
+                </h3>
+                <p>
+                    For training we created our own pipeline to connect the dataset and the model. A To make sure that the masked model 
+                    remained masked, the gradients calculated from the l
+                </p>
+
+                <h2>
+                    Results
+                </h2>
+                <p>
+                    Qualitive and quantitive
+                </p>
+                <h2>
+                    References
+                </h2>
+                <p>
+                    Laina, I., Rupprecht, C., Belagiannis, V., Tombari, F., & Navab, N. (2016). 
+                    Deeper Depth Prediction with Fully Convolutional Residual Networks. https://doi.org/10.1109/3dv.2016.32
+                    L. Zwald and S. Lambert-Lacroix. The berhu penalty and the
+                    grouped effect. arXiv preprint arXiv:1207.6868, 2012. 2, 4,
+                    5
+                </p>
+                <!-- 
 
                 <p>
                     DARTS (Differentiable Architecture Search) is a method for automating the search for neural
