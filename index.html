@@ -161,7 +161,11 @@
                     approach relied on iterative magnitude pruning, where the network was trained until convergence.
                     Subsequently, all weights below a certain magnitude threshold were pruned, and the remaining weights
                     were reset to their initial random values. This process was repeated until the desired sparsity
-                    level was achieved, while still preserving the performance of the dense model.
+                    level was achieved, while still preserving the performance of the dense model as displayed in the
+                    following gif.
+
+                    <a class="image fit"><img src="images/LTH.gif" alt="normal" /></a>
+
 
                     However, it was later revealed that this hypothesis did not hold for larger models. As a result,
                     Frankle put forth a modified hypothesis that was applicable to larger models. Instead of resetting
@@ -182,6 +186,8 @@
                     iterative magnitude pruning technique on a pre-trained model, our research aims to provide
                     compelling evidence supporting the preservation of downstream transferability in the realm of depth
                     estimation.
+
+
                 </p>
 
                 <h2>
