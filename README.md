@@ -1,8 +1,8 @@
-# DARTS Search Reproduction
+# Depth estimation fine tuning Reproduction
 
 This repository contains instructions for reproducing the experiments that answer the research question:
 Can we aggressively trim down the complexity of pre-trained models, without damaging their downstream transferability on the depth estimation task?
-The experimental setup involves a google colab [ipynb file](https://github.com/HAJEKEL/EfficientNetV2_paper_reproduction/blob/main/darts_search.ipynb) running on a Google Compute Engine (GCE) virtual machine instance with a GPU. The source code to obtain the masks through iterative magnitude pruning  code can be found in the [CV_LTH_Pre-training](https://github.com/HAJEKEL/CV_LTH_Pre-training) repo. 
+The experimental setup involves a google colab [ipynb file](https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation) running on a Google Compute Engine (GCE) virtual machine instance with a GPU. The source code to obtain the masks through iterative magnitude pruning  code can be found in the [CV_LTH_Pre-training](https://github.com/HAJEKEL/CV_LTH_Pre-training) repo. 
 
 ## Prerequisites
 
@@ -33,6 +33,6 @@ To reproduce the fine tuning process, follow the steps below:
    - Comments inside the file explain what's going on. 
    - Note that the source code allows for fine tuning on 3 different datasets, ImageNet, MoCo and SimCLR. However, at the moment, only the masks of ImageNet are available. Therefore, for now, the only experiment that can be conducted is based on the ImageNet dataset.
 
-## Darts algoritm
+## Pre-trained Resnet-50 on Imagenet
 
-The DARTS source code can be found in the [pt.darts](https://github.com/HAJEKEL/pt.darts/tree/darts_efficient_mobilenet) repo. The README there will guide you through the source code. 
+The source code for pre-training the Resnet-50 on imagenet  can be found in the [CV_LTH_Pre-training](https://github.com/HAJEKEL/CV_LTH_Pre-training) repo. The README there will guide you through the source code. 
