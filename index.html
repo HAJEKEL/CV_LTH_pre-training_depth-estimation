@@ -223,9 +223,27 @@
                 <h3>
                     Training procedure
                 </h3>
+                <h4>
+                    loss function
+                </h4>
                 <p>
-                    For training we created our own pipeline to connect the dataset and the model. A To make sure that the masked model 
-                    remained masked, the gradients calculated from the l
+                    For training we created our own pipeline to connect the dataset and the model. The berHu loss 
+                    function was used to train the model, it is a loss function that combines the L1 and L2 losses based on the highest pixel error in 
+                    each minibatch (L. Zwald and S. Lambert-Lacroix., 2012). This choice was made because it was used by Laina et al. (2016) on the same task.
+
+                </p>
+                
+                <h4>
+                    optimizer
+                </h4>
+                <p>
+                    The standard torch SGD optimizer was used to change the values based on the gradients coming from the loss function.
+                    We used a learning rate of 0.0001 for the Resnet-50 part of the model and a learning rate of 0.002 (x20) for the upsampling blocks. 
+                    The momentum parameter (&beta;) was set to 0.9 and weight decay was set to 0.01. These setting were taken from the code of Laina et al. (2016) except for the learning rate, which originally was 0.001.
+                    The learning rate was decreased, because the model would diverge exponentially in the first epochs
+                </p>
+                <p>
+                    As one of the compared models is masked, we need to mask the gradients of this model as well. This is done using the same mask used for masking the model itself.
                 </p>
 
                 <h2>
@@ -233,6 +251,7 @@
                 </h2>
                 <p>
                     Qualitive and quantitive
+                    No results yet.
                 </p>
                 <h2>
                     References
