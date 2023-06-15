@@ -7,7 +7,7 @@
 <html>
 
 <head>
-    <title>EfficientnetV2 </title>
+    <title>BrightSight </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -24,8 +24,9 @@
 
         <!-- Intro -->
         <div id="intro">
-            <h1>EfficientnetV2</h1>
-            <h2>DARTS for neural architecture search</h2>
+            <h1>BrightSight</h1>
+            <h2>Unlocking the Visual World: Harnessing the Lottery Ticket Hypothesis for State-of-the-Art Monocular
+                Depth Estimation in Embedded Glasses to Empower the Visually Impaired.</h2>
             <p>
                 <a href="https://www.linkedin.com/in/henk-jekel-748054259/" target="_blank">
                     <img src="images/linkedin_icon.png" alt="LinkedIn Pictogram" width="35" height="35">
@@ -77,58 +78,131 @@
             <article class="post featured">
                 <header class="major">
                     <span class="date">April 28, 2023</span>
-                    <h1><a>EfficientnetV2<br />
-                            DARTS for neural architecture search</a></h1>
+                    <h1>BrightSight</h1>
                 </header>
+                <h2>The Lottery Tickets Hypothesis for Supervised
+                    Pre-training in depth estimation models. </h2>
+                <!-- 
                 <a class="image fit"><img src="images/EP50-reduce.png" alt="EP50-reduce" /></a>
+                -->
                 <h2>
                     Abstract
                 </h2>
                 <p>
-                    In this project, software was developed to utilize differentiable architecture search
-                    (DARTS) to determine the best building block for a cell. Specifically, three types of blocks were
-                    compared: mobile inverted bottleneck (MBConv), Fused-MBConv and Depthwise Separable Convolution
-                    (DSConv). The motivation behind the
-                    project was to investigate the developmental process of the Fused-MBConv block, which is a superior
-                    architecture building block used in the state-of-the-art image recognizer, EfficientNetV2, developed
-                    by the Google brain team. A differentiable architecture search was conducted to evaluate the
-                    performance of these three blocks on the Fashion-MNIST dataset. The research aimed to prove that the
-                    DARTS algorithm would choose the best block among the three types that were evaluated.However, the
-                    results showed that for the reduce cell, the algorithm identified a combination of blocks, whereas
-                    for the normal cell, it only employed the weakest block, which is the DSConv. Despite the repeated
-                    selection of the DSConv by DARTS, the alpha values for the normal cell in the final epoch indicated
-                    that there was no strong preference for any of the blocks, and that the selection of the DSConv was
-                    random.
+                    This scientific paper introduces a method to compress state-of-the-art depth estimators using the
+                    lottery ticomputercket hypothesis. The objective is to enable real-time depth estimation on embedded
+                    glasses, facilitating safe navigation for visually impaired individuals. By employing transformer
+                    backbones instead of convolutional networks, the proposed MiDaS v3.0 DPT-L approach revolutionizes
+                    dense vision estimation. However, direct implementation of MiDaS or Adabins on embedded glasses
+                    faces challenges, such as low FPS on single board computers.
+
+                    The main motivation behind this project is to empower visually impaired individuals to navigate
+                    unfamiliar environments and avoid obstacles. As a proof of concept, the pruned model is implemented
+                    on a Raspberry Pi Model 3B. The model determines the optimal steering angle by analyzing a
+                    horizontal strip of average bins and evaluating three criteria based on the generated depth map. The
+                    research aims to demonstrate the feasibility of incorporating haptic feedback for obstacle avoidance
+                    into existing glasses for the visually impaired, utilizing their single board computer monocular
+                    camera products.
+
+                    The experimental results demonstrate that achieving an FPS of 20 is feasible. MiDaS exhibits the
+                    most promising performance due to its higher accuracy at this frame rate, thereby highlighting the
+                    potential for enhancing the functionality of glasses for the visually impaired.
 
                 </p>
                 <h2>
                     Introduction
                 </h2>
                 <p>
-                    The field of deep learning has experienced significant advancements in the development of efficient
-                    image recognition models. One of the examples is the EfficientNetV2, which is a state-of-the-art
-                    image recognizer developed by the Google brain team. An unknown reinforcement learning-based Neural
-                    Architecture Search (NAS) algorithm was used by the model to converge from the MBConv blocks to the
-                    Fused-MBConv blocks. In this study, the evolutionary path of the Fused-MBConv block was
-                    investigated, and it was discovered that the Mobilenets depthwise separable convolution (DSConv),
-                    inverted residuals, and linear bottlenecks together with the squeeze and excitation block paved the
-                    way for the MBConv block and the Fused-MBConv block. By employing the Differentiable Architecture
-                    Search (DARTS) algorithm, the performance of three different architecture building blocks, namely
-                    Fused-MBConv, MBConv, and DSConv, was explored on the Fashion-MNIST dataset.
+                    Visual impairment presents significant challenges for individuals worldwide, particularly when
+                    navigating unfamiliar environments, often resulting in potential injuries. Traditional solutions
+                    such as guide dogs and white canes have inherent limitations. While white canes provide feedback
+                    upon physical contact, they offer a finite line of perception in a three-dimensional space.
+                    Conversely, guide dogs map the entire three-dimensional world but possess a different perspective
+                    than humans, potentially leading to errors in collision estimations. This paper proposes a novel
+                    approach to overcome these limitations by utilizing a monocular camera in conjunction with a
+                    state-of-the-art monocular depth estimator to infer depth maps of the surroundings.
+
+                    Existing glasses designed for the visually impaired, such as those from Envision, primarily focus on
+                    object detection and provide audio messages for detected objects. However, this approach lacks
+                    contextual understanding and inundates users with overwhelming audio messages. This study aims to
+                    leverage inferred depth maps to provide haptic feedback, freeing visually impaired individuals from
+                    excessive audio messages and enabling them to navigate independently. To achieve this goal, it is
+                    crucial to reduce the size of state-of-the-art depth estimation models, as they are initially too
+                    large for implementation in existing glasses.
+
+                    To address this, the lottery ticket hypothesis will be applied to two state-of-the-art models: MiDaS
+                    v3.0 DPT-L and Adabins. These models were selected based on a comprehensive literature review,
+                    highlighting their potential as the fastest and most efficient options. MiDaS v3.0 DPT-L, in
+                    particular, was chosen due to its exceptional number of parameters compared to other versions with
+                    similar performance. It is anticipated that applying the lottery ticket hypothesis will
+                    significantly reduce the number of parameters and inference time. By implementing and integrating
+                    the reduced models into existing glasses, visually impaired individuals can navigate unfamiliar
+                    environments, avoid obstacles, and receive contextual haptic feedback, thereby enhancing their
+                    independence and safety.
+
+                    Motivated by the goal of empowering visually impaired individuals, this project focuses on
+                    developing a proof of concept implementation using a Raspberry Pi Model 3B. The pruned model
+                    analyzes a horizontal strip of average bins and evaluates three criteria based on the generated
+                    depth map to determine the optimal steering angle. The research aims to demonstrate the feasibility
+                    of incorporating compressed depth estimation models into embedded glasses, revolutionizing obstacle
+                    avoidance capabilities and enabling visually impaired individuals to navigate unfamiliar
+                    environments with improved context and independence.
+
+                    ------
+                    In the realm of computer vision, the resurgence of interest in pre-trained models, including
+                    classical ImageNet supervised pre-training, has sparked enthusiasm. Recent studies suggest that the
+                    core observations of the Lottery Tickets Hypothesis (LTH) remain relevant in the pre-training
+                    paradigm of classification, detection, and segmentation tasks (Chen et al., Year). Additionally,
+                    Jonathan Frankle and Michael Carbin's paper, "The Lottery Tickets Hypothesis for Supervised and
+                    Self-supervised Pre-training in Computer Vision Models," contributes valuable insights to this
+                    hypothesis.
+
+                    Driven by curiosity, we pose the following question: Can we aggressively trim down the complexity of
+                    pre-trained models without compromising their downstream transferability on the depth estimation
+                    task?
+
+                    In this engaging blog post, we explore the concept of supervised pre-trained models through the lens
+                    of the Lottery Tickets Hypothesis (LTH) (Frankle & Carbin, 2020). LTH identifies highly sparse
+                    matching subnetworks that can be trained almost from scratch and still achieve comparable
+                    performance to the full models. Extending the scope of LTH, we investigate whether such matching
+                    subnetworks exist in pre-trained computer vision models, specifically examining their transfer
+                    performance in the context of depth estimation.
+
+                    Our extensive experiments deliver an overall positive message: from the pre-trained weights obtained
+                    through ImageNet classification, we consistently identify matching subnetworks at RESULT% to RESULT%
+                    sparsity. These subnetworks demonstrate universal transferability to the depth estimation task,
+                    exhibiting performance that remains on par with using the full pre-trained weights. Our findings
+                    affirm the general relevance of the core observations of LTH within the pre-training paradigm of
+                    depth estimation. The codes and pre-trained models used in our experiments can be accessed on
+                    GitHub: https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation.
+
+                    Join us on this fascinating journey as we uncover the untapped potential of pre-trained models and
+                    shed light on the intriguing relationship between the Lottery Tickets Hypothesis and depth
+                    estimation in computer vision.
+
+                    References:
+                    Frankle, J., & Carbin, M. (2020). The Lottery Tickets Hypothesis for Supervised and Self-supervised
+                    Pre-training in Computer Vision Models.
+
+                    Chen, T., Frankle, J., Chang, S., Liu, S., Zhang, Y., Carbin, M., & Wang, Z. (Year). The Lottery
+                    Tickets Hypothesis for Supervised and Self-supervised Pre-training in Computer Vision Models.
                 </p>
 
                 <h2>
                     Literature research
                 </h2>
 
+                <h3>Adabins</h3>
                 <p>
-
-                    The evolutionary path of the Fused-MBConv block refers to the development of architectural building
-                    blocks that led to the creation of the Fused-MBConv block. The Fused-MBConv block is a type of
+                    Adabins backbone relies on efficientnet. To understand this backbone we guide you through the
+                    evolutionary
+                    path of the Fused-MBConv block, which is efficientnets main building block. The Fused-MBConv block
+                    is a type of
                     convolutional neural network (CNN) block that has proven to be effective in improving the accuracy
                     and efficiency of image recognition models.
 
-                    The Mobilenets DSConv was one of the earliest architectural innovations
+                    The Mobilenets Depthwise seperable convolution (DSConv) was one of the earliest architectural
+                    innovations
                     that led to the development of the Fused-MBConv block. It involves a two-step convolution process
                     that separates the spatial and depth-wise convolutional operations, resulting in significant
                     reduction of the computational cost.
@@ -162,9 +236,30 @@
                 </ul>
                 </p>
 
+                to be continued
+
+                <h3> MiDaS</h3>
+
+                to be continued
+
+                <h3> Lottery ticket hypothesis</h3>
+
+                The lottery ticket hypothesis, as described by Frankle and Carbin (2019), posits that a
+                randomly-initialized, dense neural network contains a subnetwork that, when trained independently, can
+                achieve the same test accuracy as the original network within a comparable number of training
+                iterations. This implies that a significant portion of the network's parameters can be pruned, resulting
+                in a computationally lighter model.
+
+                <h4> Application</h4>
+                In our specific case, the lottery ticket hypothesis holds promising potential as we aim to deploy these
+                models on small single-board CPUs. To identify the lottery ticket parameters, we first train the
+                complete model until it reaches an adequate level of training. Subsequently, we retrain the model using
+                only the largest 10-20% of the weights, while maintaining the same initialization as the initial
+                training process.
                 <h2>
                     Methods
                 </h2>
+                <!-- 
                 <p>
                     DARTS (Differentiable Architecture Search) is a method for automating the search for neural
                     network architectures. The goal is to find the best architecture for a given task without
@@ -202,9 +297,11 @@
                 <ul class="actions special">
                     <li><a href="DARTS.pdf" class="button large">Download PDF</a></li>
                 </ul>
+                -->
                 <h2>
                     Results
                 </h2>
+                <!-- 
                 <p>
                     The experiments conducted involved training DARTS on the FashionMNIST dataset for 50 epochs,
                     utilizing the only available operations DSConv, MBConv, and Fused-mbconv. Two visualizations of
@@ -232,9 +329,12 @@
 
 
                 </p>
+                -->
                 <h2>
                     Conclusion
                 </h2>
+
+                --> <!-- 
                 <p>
                     The high accuracy rates and low loss observed in both the training and validation indicate that
                     the training process was successful. The model has effectively learned the underlying patterns
@@ -250,11 +350,11 @@
 
 
                 </p>
-
+                -->
                 <h2>
                     Code implementation
                 </h2>
-
+                <!-- 
                 <p>
                     Code for this blog:
                 <ul class="actions special">
@@ -270,9 +370,10 @@
                 <p> Code for the DARTS implementation with operations DSConv MBConv and Fused-MBConv:
                 </p>
                 <ul class="actions special">
-                    <li><a href="https://github.com/HAJEKEL/pt.darts" class="button large">DARTS</a></li>
+                    <li><a href="https://github.com/HAJEKEL/pt.darts class="button large">DARTS</a></li>
                 </ul>
                 </p>
+                -->
             </article>
 
 
