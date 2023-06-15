@@ -152,122 +152,38 @@
                     Literature research
                 </h2>
 
-
-                <h3>Adabins</h3>
-                <p>
-                    Please rewrite based on this conversation and your knowledge of the lottery ticket hypothesis
-                    papers:
-                    Jonathan Frankle persued to research the lottery ticket hypothesis during his PHD. The initial
-                    hypothesis hypothesized that it would be possible to find sparse networks within dense networks
-                    before training that would perform just as good as the dense network after training. The method was
-                    based on iterative magnitude pruning, where the network would be trained to convergence, only the
-                    weights with the highest values would be kept and then all weights would be reset to their first
-                    random initialization. based on luck considering their random initialization would perform equally
-                    well as the dense network after training. This hypothesis would later be debunked because as it
-                    wouldnt hold for larger models. Frankle then showed that a modified hypothesis did hold for larger
-                    models, where the weights would be reset o
-
-
-
-
-
-                    ----------
-                    Adabins backbone relies on efficientnet. To understand this backbone we guide you through the
-                    evolutionary
-                    path of the Fused-MBConv block, which is efficientnets main building block. The Fused-MBConv block
-                    is a type of
-                    convolutional neural network (CNN) block that has proven to be effective in improving the accuracy
-                    and efficiency of image recognition models.
-
-                    The Mobilenets Depthwise seperable convolution (DSConv) was one of the earliest architectural
-                    innovations
-                    that led to the development of the Fused-MBConv block. It involves a two-step convolution process
-                    that separates the spatial and depth-wise convolutional operations, resulting in significant
-                    reduction of the computational cost.
-
-                    More details on DSConv in the downloadable pdf:
-
-
-                <ul class="actions special">
-                    <li><a href="MobileNets.pdf" class="button large">Download PDF</a></li>
-                </ul>
-
-                Visual impairment presents significant challenges for individuals worldwide, particularly when
-                navigating unfamiliar environments, often resulting in potential injuries. Traditional solutions
-                such as guide dogs and white canes have inherent limitations. While white canes provide feedback
-                upon physical contact, they offer a finite line of perception in a three-dimensional space.
-                Conversely, guide dogs map the entire three-dimensional world but possess a different perspective
-                than humans, potentially leading to errors in collision estimations. This paper proposes a novel
-                approach to overcome these limitations by utilizing a monocular camera in conjunction with a
-                state-of-the-art monocular depth estimator to infer depth maps of the surroundings.
-
-                Existing glasses designed for the visually impaired, such as those from Envision, primarily focus on
-                object detection and provide audio messages for detected objects. However, this approach lacks
-                contextual understanding and inundates users with overwhelming audio messages. This study aims to
-                leverage inferred depth maps to provide haptic feedback, freeing visually impaired individuals from
-                excessive audio messages and enabling them to navigate independently. To achieve this goal, it is
-                crucial to reduce the size of state-of-the-art depth estimation models, as they are initially too
-                large for implementation in existing glasses.
-
-                To address this, the lottery ticket hypothesis will be applied to two state-of-the-art models: MiDaS
-                v3.0 DPT-L and Adabins. These models were selected based on a comprehensive literature review,
-                highlighting their potential as the fastest and most efficient options. MiDaS v3.0 DPT-L, in
-                particular, was chosen due to its exceptional number of parameters compared to other versions with
-                similar performance. It is anticipated that applying the lottery ticket hypothesis will
-                significantly reduce the number of parameters and inference time. By implementing and integrating
-                the reduced models into existing glasses, visually impaired individuals can navigate unfamiliar
-                environments, avoid obstacles, and receive contextual haptic feedback, thereby enhancing their
-                independence and safety.
-
-                Motivated by the goal of empowering visually impaired individuals, this project focuses on
-                developing a proof of concept implementation using a Raspberry Pi Model 3B. The pruned model
-                analyzes a horizontal strip of average bins and evaluates three criteria based on the generated
-                depth map to determine the optimal steering angle. The research aims to demonstrate the feasibility
-                of incorporating compressed depth estimation models into embedded glasses, revolutionizing obstacle
-                avoidance capabilities and enabling visually impaired individuals to navigate unfamiliar
-                environments with improved context and independence.
-
-                The inverted residuals and linear bottlenecks were introduced in the MobileNetV2 architecture, which
-                is an extension of the Mobilenets. These architectural innovations helped to address the problem of
-                poor accuracy in Mobilenets and further improved the computational efficiency of the model.
-
-                The squeeze and excitation block is another architectural innovation that influenced the
-                evolutionary path. The Squeeze-and-Excitation paper proposed a mechanism to selectively emphasize
-                important channels while suppressing less important ones in convolutional layers to improve accuracy
-                on image classification benchmarks.
-
-                All of these architectural innovations eventually led to the development of the MBConv block, which
-                incorporates the DSConv of Mobilenets, the inverted residuals and linear
-                bottlenecks of MobileNetV2, and the squeeze and excitation block. The Fused-MBConv block combines
-                two of the operations within the MBConv block, leading to faster computation.
-
-                More details on mobilenetv2, MBConv and Fused-MBConv in the downloadable pdf:
-
-                <ul class="actions special">
-                    <li><a href="mobilenetv2_efficientnet.pdf" class="button large">Download PDF</a></li>
-                </ul>
-                </p>
-
-                to be continued
-
-                <h3> MiDaS</h3>
-
-                to be continued
-
                 <h3> Lottery ticket hypothesis</h3>
 
-                The lottery ticket hypothesis, as described by Frankle and Carbin (2019), posits that a
-                randomly-initialized, dense neural network contains a subnetwork that, when trained independently, can
-                achieve the same test accuracy as the original network within a comparable number of training
-                iterations. This implies that a significant portion of the network's parameters can be pruned, resulting
-                in a computationally lighter model.
+                <p>
+                    During his PhD research, Jonathan Frankle conducted a thorough investigation into the lottery ticket
+                    hypothesis. Initially, the hypothesis proposed that it was feasible to identify sparse subnetworks
+                    within dense networks that would perform comparably to the dense network after training. This
+                    approach relied on iterative magnitude pruning, where the network was trained until convergence.
+                    Subsequently, all weights below a certain magnitude threshold were pruned, and the remaining weights
+                    were reset to their initial random values. This process was repeated until the desired sparsity
+                    level was achieved, while still preserving the performance of the dense model.
 
-                <h4> Application</h4>
-                In our specific case, the lottery ticket hypothesis holds promising potential as we aim to deploy these
-                models on small single-board CPUs. To identify the lottery ticket parameters, we first train the
-                complete model until it reaches an adequate level of training. Subsequently, we retrain the model using
-                only the largest 10-20% of the weights, while maintaining the same initialization as the initial
-                training process.
+                    However, it was later revealed that this hypothesis did not hold for larger models. As a result,
+                    Frankle put forth a modified hypothesis that was applicable to larger models. Instead of resetting
+                    the weights to their original random initialization, he proposed resetting them to an earlier point
+                    in the training process. This breakthrough led to the publication of the influential paper "Linear
+                    Mode Connectivity and the Lottery Ticket Hypothesis," which demonstrated that regardless of the
+                    stochastic gradient descent (SGD) noise, models would converge to the same linearly connected
+                    minimum when initialized at an early training point.
+
+                    Building upon these seminal findings, our study focuses on applying this second approach in the
+                    context of a large ResNet-50 model trained on ImageNet. We employ iterative magnitude pruning, where
+                    the remaining weights are iteratively reset to an early point in training. Specifically, we
+                    investigate the application of this resetting method in iterative magnitude pruning for pre-trained
+                    classification models on ImageNet. Furthermore, we utilize the obtained weight mask to validate that
+                    the downstream transferability for depth estimation is not compromised.
+
+                    By delving into the implications of the modified lottery ticket hypothesis and leveraging the
+                    iterative magnitude pruning technique on a pre-trained model, our research aims to provide
+                    compelling evidence supporting the preservation of downstream transferability in the realm of depth
+                    estimation.
+                </p>
+
                 <h2>
                     Methods
                 </h2>
@@ -346,7 +262,7 @@
                     Conclusion
                 </h2>
 
-                --> <!-- 
+
                 <p>
                     The high accuracy rates and low loss observed in both the training and validation indicate that
                     the training process was successful. The model has effectively learned the underlying patterns
@@ -362,7 +278,7 @@
 
 
                 </p>
-                -->
+
                 <h2>
                     Code implementation
                 </h2>
