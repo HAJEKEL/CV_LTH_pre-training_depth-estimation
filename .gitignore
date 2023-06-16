@@ -1,3 +1,4 @@
 colabGitWorkflow.ipynb
 **/__pycache__/
 **\__pycache__\
+model/*
