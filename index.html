@@ -91,18 +91,16 @@ DOCTYPE HTML>
                 <p>
                     Abstract:
 
-                    In the field of computer vision, pre-trained models have gained renewed attention, particularly in
-                    the realm of ImageNet supervised pre-training. Recent studies have highlighted the enduring
+                    In the field of computer vision, pre-trained models have gained renewed attention, including
+                    ImageNet supervised pre-training. Recent studies have highlighted the enduring
                     significance of the Lottery Tickets Hypothesis (LTH) in the context of classification, detection,
                     and segmentation tasks. Inspired by this, we set out to explore the potential of LTH in the
                     pre-training paradigm of depth estimation. Our aim is to investigate whether we can significantly
                     reduce the complexity of pre-trained models without compromising their downstream transferability in
-                    the depth estimation task. Through extensive experimentation, we consistently identify highly sparse
-                    matching subnetworks within pre-trained weights obtained from ImageNet classification. These
-                    subnetworks demonstrate universal transferability to the depth estimation task, maintaining
-                    performance comparable to that of the full pre-trained models. Our findings reinforce the relevance
-                    of LTH in the pre-training paradigm of depth estimation, paving the way for more efficient and
-                    effective depth estimation models.
+                    the depth estimation task. We fine-tune the sparse pre-trained networks obtained through iterative
+                    magnitude pruning and demonstrate universal transferability to the depth estimation task,
+                    maintaining performance comparable to that of fine tuning on the full pre-trained model. Our
+                    findings inconclusive.
 
                 </p>
                 <h2>
@@ -112,40 +110,58 @@ DOCTYPE HTML>
                     In the realm of computer vision, the resurgence of interest in pre-trained models, including
                     classical ImageNet supervised pre-training, has sparked enthusiasm. Recent studies suggest that the
                     core observations of the Lottery Tickets Hypothesis (LTH) remain relevant in the pre-training
-                    paradigm of classification, detection, and segmentation tasks (Chen et al., Year). Additionally,
-                    Jonathan Frankle and Michael Carbin's paper, "The Lottery Tickets Hypothesis for Supervised and
-                    Self-supervised Pre-training in Computer Vision Models," contributes valuable insights to this
-                    hypothesis.
+                    paradigm of classification, detection, and segmentation tasks (Chen et al., 2021) as displayed in
+                    the following figure.
 
-                    Driven by curiosity, we pose the following question: Can we aggressively trim down the complexity of
+                <figure>
+                    <a class="image fit">
+                        <img src="images/transfer_learning_LTH.jpg" alt="Description of the image" />
+                    </a>
+                    <figcaption><span style="font-size: smaller; font-weight: bold;">Studies show that
+                            within pre-trained computer vision models (both supervised and
+                            self-supervised), there are matching subnetworks that exhibit transferability to multiple
+                            downstream tasks, with minimal performance degradation compared to using the full
+                            pre-trained
+                            weights. Task-agnostic and universally transferable subnetworks are found during pre-trained
+                            initialization, benefiting classification, detection, and segmentation tasks.(Chen et al.,
+                            2021) </span>
+                    </figcaption>
+                </figure>
+
+
+                Driven by curiosity, we pose the following question:
+                </p>
+                <h3>
+                    Can we aggressively trim down the complexity of
                     pre-trained models without compromising their downstream transferability on the depth estimation
                     task?
+                </h3>
 
-                    In this engaging blog post, we explore the concept of supervised pre-trained models through the lens
-                    of the Lottery Tickets Hypothesis (LTH) (Frankle & Carbin, 2020). LTH identifies highly sparse
-                    matching subnetworks that can be trained almost from scratch and still achieve comparable
-                    performance to the full models. Extending the scope of LTH, we investigate whether such matching
-                    subnetworks exist in pre-trained computer vision models, specifically examining their transfer
-                    performance in the context of depth estimation.
+                <p>
 
-                    Our extensive experiments deliver an overall positive message: from the pre-trained weights obtained
-                    through ImageNet classification, we consistently identify matching subnetworks at RESULT% to RESULT%
-                    sparsity. These subnetworks demonstrate universal transferability to the depth estimation task,
-                    exhibiting performance that remains on par with using the full pre-trained weights. Our findings
-                    affirm the general relevance of the core observations of LTH within the pre-training paradigm of
-                    depth estimation. The codes and pre-trained models used in our experiments can be accessed on
-                    GitHub: https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation.
+                <figure>
+                    <a class="image fit">
+                        <img src="images/transfer_learning_LTH_depth.png" alt="Description of the image" />
+                    </a>
+                    <figcaption><span style="font-size: smaller; font-weight: bold;">We wonder if the sparse
+                            subnetworks also transfer to the depth estimation task.</span>
+                    </figcaption>
+                </figure>
 
-                    Join us on this fascinating journey as we uncover the untapped potential of pre-trained models and
-                    shed light on the intriguing relationship between the Lottery Tickets Hypothesis and depth
-                    estimation in computer vision.
+                In this engaging blog post, we explore the concept of supervised pre-trained models through the lens
+                of the Lottery Tickets Hypothesis (LTH) (Frankle & Carbin, 2019). LTH identifies highly sparse
+                matching subnetworks that can be trained almost from scratch and still achieve comparable
+                performance to the full models. Extending the scope of LTH, we investigate whether such matching
+                subnetworks exist in pre-trained computer vision models, specifically examining their transfer
+                performance in the context of depth estimation.
 
-                    References:
-                    Frankle, J., & Carbin, M. (2020). The Lottery Tickets Hypothesis for Supervised and Self-supervised
-                    Pre-training in Computer Vision Models.
+                Our experiments did not confirm nor deny the possibility of the hypothesis as the experiments failed.
+                The codes and pre-trained models used in our experiments can be accessed on
+                GitHub: https://github.com/HAJEKEL/CV_LTH_pre-training_depth-estimation.
 
-                    Chen, T., Frankle, J., Chang, S., Liu, S., Zhang, Y., Carbin, M., & Wang, Z. (Year). The Lottery
-                    Tickets Hypothesis for Supervised and Self-supervised Pre-training in Computer Vision Models.
+                Join us on this fascinating journey as we uncover the untapped potential of pre-trained models and
+                shed light on the intriguing relationship between the Lottery Tickets Hypothesis and depth
+                estimation in computer vision.
                 </p>
 
                 <h2>
@@ -163,29 +179,54 @@ DOCTYPE HTML>
                     were reset to their initial random values. This process was repeated until the desired sparsity
                     level was achieved, while still preserving the performance of the dense model as displayed in the
                     following gif.
+                <figure>
+                    <a class="image fit">
+                        <img src="images/LTH.gif" alt="Description of the image" />
+                    </a>
+                    <figcaption><span style="font-size: smaller; font-weight: bold;">An animation that shows the process
+                            of iterative magnitude pruning proposed in the paper "The Lottery Ticket Hypothesis: Finding
+                            Sparse, Trainable Neural Networks" (J. Frankle & M. Carbin, 2019)</span>
+                    </figcaption>
+                </figure>
 
-                    <a class="image fit"><img src="images/LTH.gif" alt="normal" /></a>
 
+                However, it was later revealed that this hypothesis did not hold for larger models. As a result,
+                Frankle put forth a modified hypothesis that was applicable to larger models. Instead of resetting
+                the weights to their original random initialization, he proposed resetting them to an earlier point
+                in the training process. This breakthrough led to the publication of the influential paper "Linear
+                Mode Connectivity and the Lottery Ticket Hypothesis," which demonstrated that regardless of the
+                stochastic gradient descent (SGD) noise, models would converge to the same linearly connected
+                minimum when initialized at an early training point instead of their random initialization as
+                displayed in the following image.
 
-                    However, it was later revealed that this hypothesis did not hold for larger models. As a result,
-                    Frankle put forth a modified hypothesis that was applicable to larger models. Instead of resetting
-                    the weights to their original random initialization, he proposed resetting them to an earlier point
-                    in the training process. This breakthrough led to the publication of the influential paper "Linear
-                    Mode Connectivity and the Lottery Ticket Hypothesis," which demonstrated that regardless of the
-                    stochastic gradient descent (SGD) noise, models would converge to the same linearly connected
-                    minimum when initialized at an early training point.
+                <figure>
+                    <a class="image fit">
+                        <img src="images/linear_mode_connectivity.jpg" alt="Description of the image" />
+                    </a>
+                    <figcaption><span style="font-size: smaller; font-weight: bold;">A diagram of instability analysis
+                            from step training step 0 (left) and
+                            step k (right) when comparing networks using linear interpolation. At a certain training
+                            step k the subnetwork becomes stable to SGD noise. The weight values at train step k are the
+                            weight values that need to be used when resetting the weights in iterative magnitude pruning
+                            for uptaining the sparse subnetworks. </span>
+                    </figcaption>
+                </figure>
 
-                    Building upon these seminal findings, our study focuses on applying this second approach in the
-                    context of a large ResNet-50 model trained on ImageNet. We employ iterative magnitude pruning, where
-                    the remaining weights are iteratively reset to an early point in training. Specifically, we
-                    investigate the application of this resetting method in iterative magnitude pruning for pre-trained
-                    classification models on ImageNet. Furthermore, we utilize the obtained weight mask to validate that
-                    the downstream transferability for depth estimation is not compromised.
+                Building upon these seminal findings, our study focuses on applying this second approach in the
+                context of a large ResNet-50 model trained on ImageNet. We employ iterative magnitude pruning, where
+                the remaining weights are iteratively reset to an early point in training. Specifically, we
+                investigate the application of this resetting method in iterative magnitude pruning for pre-trained
+                classification models on ImageNet. Furthermore, we utilize the obtained weight mask to validate that
+                the downstream transferability for monocular depth estimation is not compromised.
 
-                    By delving into the implications of the modified lottery ticket hypothesis and leveraging the
-                    iterative magnitude pruning technique on a pre-trained model, our research aims to provide
-                    compelling evidence supporting the preservation of downstream transferability in the realm of depth
-                    estimation.
+                Depth estimation is a crucial step towards inferring scene geometry from 2D images. The goal in
+                monocular depth estimation is to predict the depth value of each pixel or inferring depth information,
+                given only a single RGB image as input. This is generally done using an encoder decoder network.
+
+                By delving into the implications of the modified lottery ticket hypothesis and leveraging the
+                iterative magnitude pruning technique on a pre-trained model, our research aims to provide
+                compelling evidence supporting the preservation of downstream transferability in the realm of depth
+                estimation.
 
 
                 </p>
@@ -194,163 +235,197 @@ DOCTYPE HTML>
                     Methods
                 </h2>
                 <p>
-                    This section descripes the experiments done. First the models used are described after which the exact 
-                    mask used will be described. The final part of this section describes all specifics about the 
+                    This section descripes the experiments done. First the models used are described after which the
+                    exact
+                    mask used will be described. The final part of this section describes all specifics about the
                     training procedure.
                 </p>
                 <h3>
                     Model
                 </h3>
                 <p>
-                    For the experiments the FCRN model architecture will be used, this model architecture was proposed by Laina et al. (2016), 
-                    the model uses ResNet-50 as a base and a self-designed upsampling end. Instead of the fully connected end layer, 
-                    which is used for pre-training, the model has upsampling blocks to generate the 2D depth estimation output.
+                    For the experiments the FCRN model architecture will be used, this model architecture was proposed
+                    by Laina et al. (2016),
+                    the model uses ResNet-50 as a base and a self-designed upsampling end. Instead of the fully
+                    connected end layer,reinforce the relevance of LTH in the pre-training paradigm of depth estimation,
+                    paving the
+                    way for more efficient and effective depth estimation models.
+                    which is used for pre-training, the model has upsampling blocks to generate the 2D depth estimation
+                    output.
                 </p>
                 <figure>
                     <img src="images/model_architecture.png" alt="Model" style="width:100%">
-                    <figcaption>Fig.1 - Complete model architecture including the base ResNet-50 model (first two lines) and the new upsampling blocks (Laina et al.,2016).</figcaption>
-                  </figure>
+                    <figcaption>Fig.1 - Complete model architecture including the base ResNet-50 model (first two lines)
+                        and the new upsampling blocks (Laina et al.,2016).</figcaption>
+                </figure>
                 <h4>
                     Masking
                 </h4>
-                    As described above, we want to combine the proposed model, with the masking of the lottery hypothesis paper. 
-                    To do this we mask the model using a mask provided by Chen et al. (2021). The mask used had a sparsity of 1.88%
+                As described above, we want to combine the proposed model, with the masking of the lottery hypothesis
+                paper.
+                To do this we mask the model using a mask provided by Chen et al. (2021). The mask used had a sparsity
+                of 1.88%
                 <h3>
                     Dataset
                 </h3>
                 <p>
-                    For training the model we used the depth dataset of NYU, it consists of 1449 frames of rgb-Depth pictures. 
-                    We only use the labeled part of the dataset and not the unlabeled part which is even bigger.                
-                    For more information about the dataset look at this page: <a href="https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html"> nyu dataset</a>
+                    For training the model we used the depth dataset of NYU, it consists of 1449 frames of rgb-Depth
+                    pictures.
+                    We only use the labeled part of the dataset and not the unlabeled part which is even bigger.
+                    For more information about the dataset look at this page: <a
+                        href="https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html"> nyu dataset</a>
                 </p>
                 <h3>
                     Training procedure
                 </h3>
                 <p>
-                    The models were trained on the labeled section of the NYU depth dataset, 
-                    we trained till convergence for both the sparse and dense model. For the loss function we took the berHu loss which was used by
+                    The models were trained on the labeled section of the NYU depth dataset,
+                    we trained till convergence for both the sparse and dense model. For the loss function we took the
+                    berHu loss which was used by
                     Laina et al. (2016) and design by (L. Zwald and S. Lambert-Lacroix., 2012).
                 </p>
                 <h4>
                     loss function
                 </h4>
                 <p>
-                    For training we created our own pipeline to connect the dataset and the model. The berHu loss 
-                    function was used to train the model, it is a loss function that combines the L1 and L2 losses based on the highest pixel error in 
-                    each minibatch (L. Zwald and S. Lambert-Lacroix., 2012). This choice was made because it was used by Laina et al. (2016) on the same task.
+                    For training we created our own pipeline to connect the dataset and the model. The berHu loss
+                    function was used to train the model, it is a loss function that combines the L1 and L2 losses based
+                    on the highest pixel error in
+                    each minibatch (L. Zwald and S. Lambert-Lacroix., 2012). This choice was made because it was used by
+                    Laina et al. (2016) on the same task.
 
                 </p>
-                
+
                 <h4>
                     optimizer
                 </h4>
                 <p>
-                    The standard torch SGD optimizer was used to change the values based on the gradients coming from the loss function.
-                    We used a learning rate of 0.0001 for the Resnet-50 part of the model and a learning rate of 0.002 (x20) for the upsampling blocks. 
-                    The momentum parameter (&beta;) was set to 0.9 and weight decay was set to 0.01. These setting were taken from the code of Laina et al. (2016) except for the learning rate, which originally was 0.001.
+                    The standard torch SGD optimizer was used to change the values based on the gradients coming from
+                    the loss function.
+                    We used a learning rate of 0.0001 for the Resnet-50 part of the model and a learning rate of 0.002
+                    (x20) for the upsampling blocks.
+                    The momentum parameter (&beta;) was set to 0.9 and weight decay was set to 0.01. These setting were
+                    taken from the code of Laina et al. (2016) except for the learning rate, which originally was 0.001.
                     The learning rate was decreased, because the model would diverge exponentially in the first epochs
                 </p>
                 <p>
-                    As one of the compared models is masked, we need to mask the gradients of this model as well. This is done using the same mask used for masking the model itself.
+                    As one of the compared models is masked, we need to mask the gradients of this model as well. This
+                    is done using the same mask used for masking the model itself.
                 </p>
 
                 <h2>
                     Results
                 </h2>
                 <p>
-                    Below are some depth maps generated by the models, as you can see 
-                    
+                    Below are some depth maps generated by the models, as you can see
+
                 <figure>
                     <img src="images/output_1.png" alt="Model" style="width:100%">
-                    <figcaption>Fig.2 - Depth maps generated by the models next to in put and the groundtruth depthmap.</figcaption>
-                  </figure>
-                  
+                    <figcaption>Fig.2 - Depth maps generated by the models next to in put and the groundtruth depthmap.
+                    </figcaption>
+                </figure>
+
                 <figure>
                     <img src="images/output_2.png" alt="Model" style="width:100%">
-                    <figcaption>Fig.3 -  Depth maps generated by the models next to in put and the groundtruth depthmap.</figcaption>
-                  </figure>
-                    To answer our research question : <i>Can we aggressively trim down the complexity of
-                        pre-trained models without compromising their downstream transferability on the depth estimation
-                        task?</i>, we evaluated multiple criteria presented in previous papers. The values are the relative 
-                        distance(rel), relative mean squared error (rms) and its log. The final three columns represent 
-                        the &#948;<sub>123</sub> , which are measure that state how much pixels are correctly esitmated 
-                        for a given error threshold.
-                    <table>
-                        <tr>
-                          <th>Model</th>
-                          <th>rel</th>
-                          <th>rms</th>
-                          <th>δ<sub>1</sub></th>
-                          <th>δ<sub>2</sub></th>
-                          <th>δ<sub>3</sub></th>
-                        </tr>
-                        <tr>
-                          <td>FCRN_dense (Laina et al.(2016))</td>
-                          <td>0.127</td>
-                          <td>0.573</td>
-                          <td>0.811</td>
-                          <td>0.953</td>
-                          <td>0.988</td>
-                        </tr>
-                        <tr>
-                          <td>FCRN_dense(OURS)</td>
-                          <td>0.325</td>
-                          <td>1.239</td>
-                          <td>0.428</td>
-                          <td>0.740</td>
-                          <td>0.904</td>
-                        </tr>
-                        <tr>
-                          <td>FCRN_sparse(OURS)</td>
-                          <td>0.339</td>
-                          <td>1.407</td>
-                          <td>0.406</td>
-                          <td>0.699</td>
-                          <td>0.886</td>
-                        </tr>
-                      </table>
-                    Unfortunately The resutls show that our model does not work as well as the model of Laina et al.,
-                    for this there are multiple possible reasons.
-                    <ol>
-                        <li>
-                            The model we compare with used not only the label NYU dataset, 
-                            but also trained on different data, resulting in better generalization.
-                        </li>
-                        <li>
-                            The training pipe was self designed, this results in the posibillity for bugs. 
-                            As can be seen in the graph, the difference between our two models 
-                            is not that big but there is a big difference with regard to the other model. 
-                        </li>
-                    </ol>
+                    <figcaption>Fig.3 - Depth maps generated by the models next to in put and the groundtruth depthmap.
+                    </figcaption>
+                </figure>
+                To answer our research question : <i>Can we aggressively trim down the complexity of
+                    pre-trained models without compromising their downstream transferability on the depth estimation
+                    task?</i>, we evaluated multiple criteria presented in previous papers. The values are the relative
+                distance(rel), relative mean squared error (rms) and its log. The final three columns represent
+                the &#948;<sub>123</sub> , which are measure that state how much pixels are correctly esitmated
+                for a given error threshold.
+                <table>
+                    <tr>
+                        <th>Model</th>
+                        <th>rel</th>
+                        <th>rms</th>
+                        <th>δ<sub>1</sub></th>
+                        <th>δ<sub>2</sub></th>
+                        <th>δ<sub>3</sub></th>
+                    </tr>
+                    <tr>
+                        <td>FCRN_dense (Laina et al.(2016))</td>
+                        <td>0.127</td>
+                        <td>0.573</td>
+                        <td>0.811</td>
+                        <td>0.953</td>
+                        <td>0.988</td>
+                    </tr>
+                    <tr>
+                        <td>FCRN_dense(OURS)</td>
+                        <td>0.325</td>
+                        <td>1.239</td>
+                        <td>0.428</td>
+                        <td>0.740</td>
+                        <td>0.904</td>
+                    </tr>
+                    <tr>
+                        <td>FCRN_sparse(OURS)</td>
+                        <td>0.339</td>
+                        <td>1.407</td>
+                        <td>0.406</td>
+                        <td>0.699</td>
+                        <td>0.886</td>
+                    </tr>
+                </table>
+                Unfortunately The resutls show that our model does not work as well as the model of Laina et al.,
+                for this there are multiple possible reasons.
+                <ol>
+                    <li>
+                        The model we compare with used not only the label NYU dataset,
+                        but also trained on different data, resulting in better generalization.
+                    </li>
+                    <li>
+                        The training pipe was self designed, this results in the posibillity for bugs.
+                        As can be seen in the graph, the difference between our two models
+                        is not that big but there is a big difference with regard to the other model.
+                    </li>
+                </ol>
 
-                    From the results we can see that the sparse model does not behave alot worse compared 
-                    to our dense trained network, but due to the big gap in performance compared to the models 
-                    of others we cannot give a real conclusive answer to the question.
+                From the results we can see that the sparse model does not behave alot worse compared
+                to our dense trained network, but due to the big gap in performance compared to the models
+                of others we cannot give a real conclusive answer to the question.
 
                 </p>
                 <h2>
                     References
                 </h2>
                 <p>
-                    <ol>
-                        <li>
-                            Silberman, N., Hoiem, D., Kohli, P., & Fergus, R. (2012). Indoor Segmentation 
-                            and Support Inference from RGBD Images. In Lecture Notes in Computer Science 
-                            (pp. 746–760). 
-                            Springer Science+Business Media. <a href="https://doi.org/10.1007/978-3-642-33715-4_54"> https://doi.org/10.1007/978-3-642-33715-4_54</a>
-                        
-                        </li>
+                <ol>
+                    <li>
+                        Silberman, N., Hoiem, D., Kohli, P., & Fergus, R. (2012). Indoor Segmentation
+                        and Support Inference from RGBD Images. In Lecture Notes in Computer Science
+                        (pp. 746–760).
+                        Springer Science+Business Media. <a href="https://doi.org/10.1007/978-3-642-33715-4_54">
+                            https://doi.org/10.1007/978-3-642-33715-4_54</a>
 
-                        <li>Laina, I., Rupprecht, C., Belagiannis, V., Tombari, F., & Navab, N. (2016). 
-                            Deeper Depth Prediction with Fully Convolutional Residual Networks.<a href="https://doi.org/10.1109/3dv.2016.32">https://doi.org/10.1109/3dv.2016.32</a>
-                            
-                        </li>
-                        <li> 
-                            L. Zwald and S. Lambert-Lacroix. The berhu penalty and the
-                            grouped effect. <a href="arXiv preprint arXiv:1207.6868, 2012. 2, 4,">arXiv preprint arXiv:1207.6868, 2012. 2, 4,</a>
-                            5
-                        </li>
-                    </ol>
+                    </li>
+
+                    <li>Laina, I., Rupprecht, C., Belagiannis, V., Tombari, F., & Navab, N. (2016).
+                        Deeper Depth Prediction with Fully Convolutional Residual Networks.<a
+                            href="https://doi.org/10.1109/3dv.2016.32">https://doi.org/10.1109/3dv.2016.32</a>
+
+                    </li>
+                    <li>
+                        L. Zwald and S. Lambert-Lacroix. The berhu penalty and the
+                        grouped effect. <a href="arXiv preprint arXiv:1207.6868, 2012. 2, 4,">arXiv preprint
+                            arXiv:1207.6868, 2012. 2, 4,</a>
+                        5
+                    </li>
+
+                    <li>
+                        Frankle, J., & Carbin, M. (2019). The Lottery Tickets Hypothesis for Supervised and
+                        Self-supervised Pre-training in Computer Vision Models.
+                    </li>
+                    <li>
+                        Chen, T., Frankle, J., Chang, S., Liu, S., Zhang, Y., Carbin, M., & Wang, Z. (2021). The Lottery
+                        Tickets Hypothesis for Supervised and Self-supervised Pre-training in Computer Vision Models.
+
+                    </li>
+
+                </ol>
                 </p>
                 <!-- 
 
@@ -461,49 +536,49 @@ DOCTYPE HTML>
         </div>
 
         <!-- Footer -->
-        <footer id="footer">
+                <footer id="footer">
 
-            <section class="split contact">
-                <section class="alt">
-                    <h3>Address</h3>
-                    <p>Delft, Netherlands<br />
-                </section>
+                    <section class="split contact">
+                        <section class="alt">
+                            <h3>Address</h3>
+                            <p>Delft, Netherlands<br />
+                        </section>
 
-                <section>
-                    <h3>Email</h3>
-                    <p><a>hendrikjekel@gmail.com</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul class="icons">
-                        <li><a href="https://www.linkedin.com/in/henk-jekel-748054259/"
-                                class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a>
-                        </li>
-                        <li><a href="https://github.com/HAJEKEL" class="icon brands alt fa-github"><span
-                                    class="label">GitHub</span></a></li>
+                        <section>
+                            <h3>Email</h3>
+                            <p><a>hendrikjekel@gmail.com</a></p>
+                        </section>
+                        <section>
+                            <h3>Social</h3>
+                            <ul class="icons">
+                                <li><a href="https://www.linkedin.com/in/henk-jekel-748054259/"
+                                        class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a>
+                                </li>
+                                <li><a href="https://github.com/HAJEKEL" class="icon brands alt fa-github"><span
+                                            class="label">GitHub</span></a></li>
+                            </ul>
+                        </section>
+                    </section>
+                </footer>
+
+                <!-- Copyright -->
+                <div id="copyright">
+                    <ul>
+                        <li>Henk Jekel &copy; 2022</li>
+                        <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
                     </ul>
-                </section>
-            </section>
-        </footer>
+                </div>
 
-        <!-- Copyright -->
-        <div id="copyright">
-            <ul>
-                <li>Henk Jekel &copy; 2022</li>
-                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-            </ul>
         </div>
 
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
 </body>
 
